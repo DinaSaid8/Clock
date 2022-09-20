@@ -3,7 +3,6 @@ let minHand = document.querySelector(".minHand");
 let secHand = document.querySelector(".secHand");
 function setDate() {
     const now = new Date();
-    // console.log(now);
     const getSecond = now.getSeconds();
     const getMinute = now.getMinutes();
     const getHour = now.getHours();
