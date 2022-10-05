@@ -1,0 +1,9 @@
+@media (max-width :755px){
+    .container{
+        padding-top:20vh ;
+        display: block;
+    }
+    .clock{
+        margin-top: 4em;
+    }
+}

@@ -4,21 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Analog Clock with dark and light mood">
     <title>Clock</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
-    <div class="clock">
+<div class="container">
+    <!-- To change Mode -->
+    <input type="checkbox" id="toggle">
+<label for="toggle">
+</label>
+
+<!-- Clock -->
+
+<div class="clock">
         <div class="outerFace">
         </div>
+
         <div class="innerFace">
             <div class="circle"></div>
             <div class="hand secHand"></div>
             <div class="hand minHand"></div>
             <div class="hand hourHand"></div>
         </div>
+        
         <div class="date"></div>
     </div>
+    <div class="background"></div>
+</div>
+
+
+
+
+
     <script src="main.js"></script>
 </body>
 </html>

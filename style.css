@@ -1,24 +1,36 @@
+/* -----------------General CSS--------------- */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 html{
-    background-color: #282828;
-    text-align: center;
+    /* background-color: #282828; */
+    /* text-align: center; */
     font-size: 10px;
 }
-body {
+body,.container {
     font-size: 2rem;
     display: flex;
-    /* flex: 1; */
+    flex: 1;
+    justify-content: space-evenly;
     height: 100vh;
     align-items: center;
+    overflow: hidden;
+}
+:root{
+  --mainColor:#282828;
+  --blackColor:#000;
+  --whiteColor:#fff;
+  --linearG:linear-gradient(90deg,#d6670cd2,#ee791a );
+
+
 }
 
+/* --------------------Clock CSS-------------- */
 .clock {
-    width: 30rem;
-    height: 30rem;
+    width: 25rem;
+    height: 25rem;
     position: relative;
     padding: 2rem;
     -webkit-box-shadow: 
@@ -32,7 +44,9 @@ body {
     -4px -4px 10px rgba(67,67,67,0.5),
     4px 4px 10px rgba(0,0,0,0.5);
     border-radius: 50%;
-    margin: 50px auto;
+    margin: auto;
+    /* margin-right: 20em; */
+
 }  
 /* outerFace */
 .outerFace {
@@ -53,10 +67,10 @@ body {
     position: absolute;
     width: 5px;
     height: 100%;
-    background: #1df52f;
+    background: var(--linearG);
+
     left: 49%;
 }
-
 /* innerFace */
 .innerFace{
     position: absolute;
@@ -64,7 +78,8 @@ body {
     left: 10%;
     width: 80%;
     height: 80%;
-    background: #363434;
+    background: linear-gradient(180deg,#777,#3a3a3a);
+    background-color: #fff;
     border-radius: 100%;
 }
 .circle
@@ -72,12 +87,12 @@ body {
     position: absolute;
     width: 16px;
     height: 16px;
-    background: #4d4b63;
     border-radius: 18px;
     margin: auto;
-    bottom: 47.5%;
-    left: 46.8%;
+    bottom: 48%;
+    left: 47.2%;
     z-index: 50;
+    background-color: var(--mainColor);
 }
 /* Hands */
 .hand
@@ -89,7 +104,7 @@ right: 50%;
 top: 48%;
 border-radius: 6px;
 transform-origin:100%;
-background-color: #01050a;
+background-color: var(--blackColor);
 
 }
  .hand.hourHand {
@@ -104,7 +119,7 @@ background-color: #01050a;
     transform-origin: 100% ;
   }
   .hand.secHand {
-    background: #ee791a;
+    background: var(--linearG);
     width: 44%;
     height: 2px;
     transform-origin:100% ;
@@ -116,7 +131,72 @@ background-color: #01050a;
     font-weight: bold;
     position: absolute;
     bottom: 68px;
-    left: 30px;
+    left: 83px;
     right: 20px;
-    color: #221e1e;
+    color: var(--mainColor);
   } 
+  /* ----------------default mode------------------ */
+ /* -----------------dark mood-------------------- */
+label{
+  position: relative;
+  display: block;
+  width: 232px;
+    height: 110px;
+    /* top: 97px; */
+    margin: auto;
+
+  border-radius: 200px;
+  box-shadow: inset 0 3px 10px rgba(156, 142, 142, 0.4),
+              inset 0 -3px 20px rgba(63, 62, 62, 0.4);
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+label::after{
+  content: '';
+  position: absolute;
+ 
+  width: 110px;
+  height: 110px;
+  top: 0;
+
+  left: 2px;
+  background-image: linear-gradient(180deg,#777,#3a3a3a);
+  border-radius: 180px;
+  box-shadow: -3px -3px 10px #00000040,
+               3px 3px 20px #00000040;
+  transition: all .3s ease-in-out;
+}
+input{
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.background{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--mainColor);
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+  /* ------------------lightmode---------------- */
+input:checked + label::after{
+  left: 232px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg,#ffcc96,#ee791a );
+}
+input:checked ~ .background{
+    background-color: var(--whiteColor);
+}
+
+input:checked ~ div  > div:nth-child(2){
+  background:#fff;
+
+}
+input:checked  ~ .clock{
+      box-shadow:  0 0 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(0, 0, 0, 0.05), 0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3);
+}
